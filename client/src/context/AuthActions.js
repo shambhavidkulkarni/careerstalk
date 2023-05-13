@@ -11,6 +11,11 @@ export const LoginFailure = () => ({
   type: "LOGIN_FAILURE",
 });
 
+export const Logout = () => ({
+  // dispatch({type: "LOGOUT"}),
+  type: "LOGOUT",
+})
+
 export const Follow = (userId) => ({
   type: "FOLLOW",
   payload: userId,

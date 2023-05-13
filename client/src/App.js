@@ -14,6 +14,7 @@ import Register from './pages/register/Register'
 import { AuthContext } from './context/AuthContext'
 import Home from './pages/home/Home'
 import Messenger from './pages/messenger/Messenger'
+import Header from './components/Header'
 
 function App() {
   const { user } = useContext(AuthContext)
@@ -24,9 +25,12 @@ function App() {
       <>
         <Routes>
           <Route path="/" element={user ? <Home/> : <Register/>}/>
-          <Route path="/login" element={user ? <Navigate to ="/"/> : <Login/>}/>
+          <Route path="/login" 
+          element={user ? <Navigate to ="/"/> : <Login/>}
+          // element={<Login/>}
+          />
           <Route path="/register" element={user ? <Navigate to ="/"/> : <Register/>}/>
-          <Route path="/messenger" element={<Messenger/>}/>
+          <Route path="/messenger" element={<><Chat/><Messenger/></>}/>
         </Routes>
       </>
     </Router>

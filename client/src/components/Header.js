@@ -1,7 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 
 const Header = () => {
+    const {user, dispatch} = useContext(AuthContext)
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        dispatch({type:"LOGOUT"});
+        navigate("/")        
+    }
   return (
     <>
      <header>
@@ -38,7 +46,10 @@ const Header = () => {
                                                 <Link to="/contact"><li><a>Contact us</a></li></Link>
                                                
                                                 <li className="button-header margin-left "><a href="#" className="btn">Join</a></li>
-                                                <li className="button-header"><a href="login.html" className="btn btn3">Log in</a></li>
+                                                <Link to="/login">
+                                                <li className="button-header"><a className="btn btn3">Log in</a></li></Link>
+                                                <li className="button-header"><a  className="btn btn3" onClick={handleLogout}>Log out</a></li>
+
                                             </ul>
                                         </nav>
                                     </div>
